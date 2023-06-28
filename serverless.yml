@@ -1,0 +1,46 @@
+service: apiuser
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.9
+
+functions:
+  create-database:
+    handler: Models/UserModel.create_table_user
+    events:
+      - httpApi:
+          path: /create-database
+          method: get
+
+  user-manager:
+    handler: Handler/UserHandler.api_user
+    events:
+      - httpApi:
+          path: /api-user
+          method: post       
+      - httpApi:
+          path: /api-user
+          method: get
+      - httpApi:
+          path: /api-user
+          method: put
+  
+  login:
+    handler: Handler/LoginHandler.login
+    events:
+      - httpApi:
+          path: /users/login
+          method: post 
+ 
+
+plugins:
+  - serverless-offline
+
+useDotenv: true
+
+custom:
+    serverless-offline:
+        httpPort: 4000
+        websocketPort: 4001
+        lambdaPort: 4002

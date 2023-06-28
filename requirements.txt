@@ -1,0 +1,6 @@
+bcrypt==4.0.1
+greenlet==2.0.2
+mysqlclient==2.1.1
+PyJWT==2.7.0
+SQLAlchemy==2.0.16
+typing_extensions==4.6.3
