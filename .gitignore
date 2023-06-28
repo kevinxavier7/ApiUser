@@ -21,3 +21,4 @@ var/
 node_modules
 package-lock.json
 *_pycache__/
+.env
